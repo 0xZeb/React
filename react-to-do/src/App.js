@@ -8,6 +8,7 @@ class App extends Component {
       super(props);
       //states expected to be an object
         this.state = {
+
           todos: [
           { description: 'Walk the cat', isCompleted: true },
           { description: 'Throw the dishes away', isCompleted: false },
@@ -31,6 +32,15 @@ toggleComplete(index) {
     this.setState( {todos: todos } );
 }
 
+deleteTodo(item) {
+  const list = this.state.todos;
+  const newTodoList = list.splice(list.length-1, list.length);
+  //console.log(newTodoList);
+
+
+  this.setState({ newTodoList: newTodoList})
+}
+
 handleChange(e) {
   this.setState({ newTodoDescription: e.target.value })
 }
@@ -47,8 +57,12 @@ handleChange(e) {
           )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
-            <input type="text" value={ this.state.newTodoDescription } onChange ={ (e) => this.handleChange(e)}/>
+            <input type="text" value={ this.state.newTodoDescription }
+                              onChange ={ (e) => this.handleChange(e)}/>
             <input type="submit" />
+
+            <input type="button" value="Remove"
+                              onClick ={ (e) => this.deleteTodo(e)}/>
         </form>
       </div>
     );
