@@ -33,32 +33,10 @@ toggleComplete(index) {
 }
 
 deleteTodo(e) {
-   /*
+
    const list = this.state.todos;
    const newTodoList = list.splice(list.length-1, list.length);
    this.setState({ newTodoList: newTodoList});
-    */
-
-   //what do you have to do different when making new array? (filter)
-   const list = this.state.todos.slice();
-   console.log("list" + list);
-   const shortList = [];
-   //const index = list[item];
-   for(let index = 0; index < list.length; index++){
-
-     console.log(list[index]);
-     if(list[index] === false){
-         console.log(shortList.append(list[index]));
-     }
-
-   }
-
-console.log("print true items: " + shortList );
-
-
-
-
-
 }
 
 handleChange(e) {
