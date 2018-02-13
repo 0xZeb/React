@@ -34,9 +34,26 @@ toggleComplete(index) {
 
 deleteTodo(e) {
 
-   const list = this.state.todos;
-   const newTodoList = list.splice(list.length-1, list.length);
-   this.setState({ newTodoList: newTodoList});
+   //Hoist copy of state, array
+   var tempState = this.state;
+   var filtered = [];
+
+   //loop through elements in todo list, checking for completion
+   for(let i = 0; i < tempState.todos.length; i++){
+      if( tempState.todos[i].isCompleted === false){
+
+           //Incomplete items pushed to new list
+           filtered.push( tempState.todos[i] );
+      }
+   }
+
+
+   //at this point, you could log the original state and the filtered array and see
+   // that state is unchanged however the copy has been filtered.
+
+  //setState to re-render new list of todos to view
+  this.setState({ todos : filtered });
+
 }
 
 handleChange(e) {
