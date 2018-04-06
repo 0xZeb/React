@@ -27,11 +27,13 @@ class Album extends Component {
     this.audioElement.volume = .3;
 
 
-
-
   }
 //end of state data
 
+  hoverPlayButton(e){
+
+
+  }
 
   changeVolume(e){
       const newVolume = e.target.value;
@@ -123,6 +125,8 @@ class Album extends Component {
           return (s-(s%=60))/60+ (9<s?':':':0')+Math.floor(s);
     }
 
+
+
   render() {
     return (
        < section className = "album" > < section id = "album-info" >
@@ -148,7 +152,7 @@ class Album extends Component {
 
           <td className = "song-actions" >
             < button >
-            < span className = "song-number" > {index + 1 }< /span>
+            < span className = "song-number" > { (index + 1)  }< /span>
             < span className = "ion-play" > < /span>
             <  span className = "ion-pause" > < /span>
             < / button >
