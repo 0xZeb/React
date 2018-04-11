@@ -1,5 +1,76 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #0000ff;
   font-family: sans-serif;
+  color: #ff00bf
 }
+
+#buttons {
+  background-color: #11ffee00;
+  shape-outside: inset(10px 10px 10px 10px);
+  color: white;
+}
+
+.song {
+  color: white;
+
+}
+.song-actions{}
+.song-number-column{}
+.song-title{font-weight: bolder;}
+.song-duration{font-weight: bolder;}
+
+.song-number{
+  color: white;
+
+}
+
+.song:hover{
+
+}
+
+
+.total-time{
+  font-weight: bolder;
+  font-size: 150%;
+}
+.current-time{
+  font-weight: bolder;
+  font-size: 150%;
+}
+ .seek-bar{
+   -webkit-appearance: none;
+   background:  #3399ff;
+
+ }
+
+/*
+.Landing
+.hero-title
+.selling-points
+.point-title
+.point-description
+ #album-info
+ #album-cover-art
+ .album-details
+ .album
+ #album-title
+ .artist
+ #release-info
+ #song-list
+ #song-number-column
+ #song-title-column
+ #song-duration-column
+ .player-bar
+ #previous
+ .ion-skip-backward
+ #play-pause
+ #handleNextClick
+ .ion-skip-forward
+ #next
+ #time-control
+ #volume-control
+ .icon ion-volume-low
+.icon ion-volume-high
+*/

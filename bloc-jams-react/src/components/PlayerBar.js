@@ -49,8 +49,7 @@ class PlayerBar extends Component {
          </span>
          <span className="icon ion-volume-high"> </span>
 
-        <div> {  this.props.volume} </div>
-        <div> {this.props.isPlaying}</div>
+      
 
        </section>
 
