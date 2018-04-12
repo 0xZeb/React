@@ -125,34 +125,20 @@ class Album extends Component {
           return (s-(s%=60))/60+ (9<s?':':':0')+Math.floor(s);
     }
 
-    handleHover(e){
-      const thisSong = e.target.innerText;
-      this.setState({trackID: thisSong});
-      console.log(e.target.innerText );
-      console.log(this.state.album.songs[1].title);
+    songClass(song) {
+        if (this.state.currentSong === song) {
+            if (this.state.isPlaying) {
+                return 'song playing';
+            } else {
+                return 'song';
+            }
+        }
+        return 'song';
     }
 
-    handleNoHover(){
-      this.setState({trackID: ""})
-
-    }
-
-    buttonDisplay(song){
-
-
-      if(this.state.isPlaying && this.state.trackID === song.title)
-      {
-        return "ion-pause";
-      }
 
 
 
-
-
-
-
-
-    }
 
 
 
@@ -178,32 +164,20 @@ class Album extends Component {
             </colgroup>
 
             <tbody >
-               { this.state.album.songs.map((song, index) =>
-                   < tr
-                    className="song"
-                    key={index}
-                    onClick={()=>this.handleSongClick(song)}
-                    onMouseOver={(e) => this.handleHover(e)}
-                    onMouseOut={(e) => this.handleNoHover(e)}
-                   >
-
-                      <td className = "song-actions" >
-                          < button >
-                            <span className= {this.buttonDisplay(song)}>
-
-
-
-
-
-
-                            </span>
-                          < / button >
-                       < /td>
-                       < td className = "song-title"> { song.title } < /td>
-                       <td className = "song-duration" > { this.formatTime( song.duration ) }< /td>
-
-                    </tr>
-                )}
+            {this.state.album.songs.map((song, index) =>
+              <tr className={this.songClass(song)} key={index}
+                    onClick={() => this.handleSongClick(song)} >
+                    <td className="song-actions">
+                       <button className="hoverButton">
+                         <span className="song-number">{index+1}</span>
+                         <span className="ion-play"></span>
+                         <span className="ion-pause"></span>
+                       </button>
+                    </td>
+                   <td className="song-title">{song.title}</td>
+                   <td className="song-duration">{this.formatTime(song.duration)}</td>
+               </tr>
+             )}
              </tbody>
 
       </table >

@@ -6,10 +6,9 @@ body {
   color: #ff00bf
 }
 
-#buttons {
-  background-color: #11ffee00;
-  shape-outside: inset(10px 10px 10px 10px);
-  color: white;
+.hoverButton {
+  padding: 8px 10px;
+
 }
 
 .song {
@@ -22,13 +21,29 @@ body {
 .song-duration{font-weight: bolder;}
 
 .song-number{
-  color: white;
+  color: blue;
 
 }
 
-.song:hover{
+tr:hover .ion-play,
+tr.playing .ion-pause,
+tr.paused .ion-play {
+  display: block;
+  
+}
+
+tr .ion-play,
+tr .ion-pause,
+tr:hover .song-number,
+tr.playing .ion-play,
+tr.playing .song-number,
+tr.paused .ion-pause,
+tr.paused .song-number {
+  display: none;
+  color: blue;
 
 }
+
 
 
 .total-time{
