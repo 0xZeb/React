@@ -19,8 +19,7 @@ class Album extends Component {
       duration: album.songs[0].duration,
       isPlaying: false,
       sliderPos: 0,
-      isHover: false
-
+      trackID: ""
 
     };
 
@@ -29,8 +28,10 @@ class Album extends Component {
     this.audioElement.volume = .3;
 
 
+
   }
 //end of state data
+
 
 
 
@@ -124,12 +125,31 @@ class Album extends Component {
           return (s-(s%=60))/60+ (9<s?':':':0')+Math.floor(s);
     }
 
-    handleHover(){
-
-
+    handleHover(e){
+      const thisSong = e.target.innerText;
+      this.setState({trackID: thisSong});
+      console.log(e.target.innerText );
+      console.log(this.state.album.songs[1].title);
     }
 
     handleNoHover(){
+      this.setState({trackID: ""})
+
+    }
+
+    buttonDisplay(song){
+
+
+      if(this.state.isPlaying && this.state.trackID === song.title)
+      {
+        return "ion-pause";
+      }
+
+
+
+
+
+
 
 
     }
@@ -163,21 +183,23 @@ class Album extends Component {
                     className="song"
                     key={index}
                     onClick={()=>this.handleSongClick(song)}
-
+                    onMouseOver={(e) => this.handleHover(e)}
+                    onMouseOut={(e) => this.handleNoHover(e)}
                    >
-                    <span ></span>
-                      <td className = "song-actions" >
-                          < button
-                            onMouseOver={() => this.handleHover()}
-                            onMouseOut={() => this.handleNoHover()}
-                          >
-                            <span className="ion-play" id="play-button"></span>
-                            <span id="song-number" >{index+1}</span>
-                            <span className="ion-pause" id="pause-button"></span>
 
+                      <td className = "song-actions" >
+                          < button >
+                            <span className= {this.buttonDisplay(song)}>
+
+
+
+
+
+
+                            </span>
                           < / button >
                        < /td>
-                       < td className = "song-title" > { song.title }< /td>
+                       < td className = "song-title"> { song.title } < /td>
                        <td className = "song-duration" > { this.formatTime( song.duration ) }< /td>
 
                     </tr>
