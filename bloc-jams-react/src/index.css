@@ -12,6 +12,10 @@ body {
   color: white;
 }
 
+.hoverButton:hover{
+  opacity: 0.0;
+}
+
 .song {
   color: white;
 

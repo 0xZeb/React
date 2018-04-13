@@ -125,11 +125,11 @@ class Album extends Component {
           return (s-(s%=60))/60+ (9<s?':':':0')+Math.floor(s);
     }
 
-    handleHover(e){
+    handleHover(e, index){
       const thisSong = e.target.innerText;
       this.setState({trackID: thisSong});
-      console.log(e.target.innerText );
-      console.log(this.state.album.songs[1].title);
+
+
     }
 
     handleNoHover(){
@@ -137,15 +137,21 @@ class Album extends Component {
 
     }
 
-    buttonDisplay(song){
+    buttonDisplay(song, index){
+      /*
+      if( !this.state.isPlaying && this.state.trackID === song.title)
+      {
+        return "ion-play";
+      }
 
-
-      if(this.state.isPlaying && this.state.trackID === song.title)
+      else if(this.state.isPlaying && this.state.trackID === song.title)
       {
         return "ion-pause";
       }
-
-
+      else if( this.state.trackID !== song.title  )
+      {
+        return index+1;
+      }*/
 
 
 
@@ -183,24 +189,18 @@ class Album extends Component {
                     className="song"
                     key={index}
                     onClick={()=>this.handleSongClick(song)}
-                    onMouseOver={(e) => this.handleHover(e)}
+                    onMouseOver={(e) => this.handleHover(e,index)}
                     onMouseOut={(e) => this.handleNoHover(e)}
                    >
 
-                      <td className = "song-actions" >
-                          < button >
-                            <span className= {this.buttonDisplay(song)}>
-
-
-
-
-
-
-                            </span>
-                          < / button >
-                       < /td>
-                       < td className = "song-title"> { song.title } < /td>
-                       <td className = "song-duration" > { this.formatTime( song.duration ) }< /td>
+                    <td className = "song-actions" >
+                        < button  >
+                          <span  className= {this.buttonDisplay(song, index)}> </span>
+                          <span className ="hoverButton" >{index+1}</span>
+                        < / button >
+                     < /td>
+                     < td className = "song-title"> { song.title } < /td>
+                     <td className = "song-duration" > { this.formatTime( song.duration ) }< /td>
 
                     </tr>
                 )}
